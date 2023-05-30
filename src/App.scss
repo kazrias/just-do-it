@@ -8,12 +8,13 @@ body {
   background: linear-gradient(180deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
 }
 
-.container{
+.container {
   max-width: 930px;
   padding: 0 15px;
   min-height: 100vh;
   margin: 0 auto;
 }
+
 .welcome-screen {
   width: 100%;
   height: 100%;
@@ -69,3 +70,4 @@ body {
     opacity: 1;
   }
 }
+

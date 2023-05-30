@@ -1,30 +1,40 @@
+import { useState } from 'react';
 import './App.scss'
 import CreateTask from './component/CreateTask/CreateTask'
 import Filters from './component/Filters/Filters'
 import Tasks from './component/Tasks/Tasks'
+import EditTask from './component/EditTask/EditTask';
 function App() {
-  const tasks = [
-    {
-      text: 'Do this project!',
-      type: 'study',
-      completed:false,
-      id: idGenerator()
-    },
-    {
-      text: 'Find job!',
-      type: 'work',
-      completed:false,
-      id: idGenerator()
-    },
-    {
-      text: 'Sleep well!',
-      type: 'other',
-      completed:false,
-      id: idGenerator()
-    }
-  ];
-  function idGenerator(obj) {
-    return Math.random().toString(16).slice(2);
+
+  const [tasks, setTasks] = useState([]);
+  const [completedTasks, setCompletedTask] = useState([]);
+  const [taskToEdit, setTaskToEdit] = useState({text:''});
+  function onTaskAdd(newTask) {
+    setTasks([...tasks, newTask])
+  }
+  function onTaskDelete(taskToDeleteId) {
+    setCompletedTask(completedTasks.filter(task => task.id !== taskToDeleteId))
+    setTasks(tasks.filter(task => task.id !== taskToDeleteId));
+  }
+  function onTaskComplete(completedTask) {
+    setCompletedTask([...completedTasks, completedTask]);
+  }
+  function onEditClick(editableTask) {
+    setTaskToEdit(editableTask);
+  }
+  function onEditComplete() {
+    setTasks(
+      tasks.map((obj) => {
+        if (obj.id === taskToEdit.id) {
+          return {
+            ...obj,
+            text: taskToEdit.text,
+            type: taskToEdit.type,
+          }
+        }
+        return obj
+      })
+    )
   }
   return (
     <div className='app'>
@@ -34,10 +44,11 @@ function App() {
       <div className="container">
         <div className="main-screen">
           <Filters />
-          <CreateTask />
-          <Tasks tasks={tasks} />
+          <CreateTask onTaskAdd={onTaskAdd} />
+          <Tasks onEditClick={onEditClick} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} tasks={tasks} />
         </div>
       </div>
+      <EditTask onEditComplete={onEditComplete} setTaskToEdit={setTaskToEdit} taskToEdit={taskToEdit} />
     </div >
   )
 }

@@ -1,7 +1,7 @@
 .task {
   background-color: white;
   margin-bottom: 15px;
-  padding-left: 10px;
+  padding-left: 20px;
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -34,5 +34,57 @@
 
   &__text {
     font-size: 24px;
+  }
+
+  &__functionality {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    gap: 15px;
+
+    img {
+      display: block;
+    }
+
+    &-done,
+    &-edit,
+    &-delete {
+      cursor: pointer;
+    }
+
+    &-edit {
+      margin-right: -3px;
+    }
+
+    &-done {
+      border: 3px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      padding: 2px;
+    }
+
+    &-check {
+      height: 14px;
+      width: 14px;
+    }
+
+    &-check.active path {
+      fill: none;
+      stroke: #000;
+      stroke-width: 4;
+      stroke-dasharray: 23;
+      stroke-dashoffset: 23;
+      animation: draw .2s linear forwards;
+      stroke-linecap: round;
+      stroke-linejoin: round
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0
+      }
+    }
   }
 }

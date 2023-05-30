@@ -3,7 +3,7 @@
   height: 50px;
   display: flex;
   background-color: #fff;
-  padding-right: 15px;
+  padding-right: 20px;
   border-radius: 12px;
   margin-bottom: 30px;
   &__text {
@@ -17,7 +17,7 @@
   }
   &__buttons {
     position: relative;
-    min-width: 100px;
+    min-width: 110px;
     height: 100%;
   }
   
@@ -48,17 +48,17 @@
 
   &__study {
     background-color: #9376E0;
-    left: 10px;
+    left: 20px;
   }
 
   &__work {
     background-color: #E893CF;
-    left: 40px;
+    left: 50px;
   }
 
   &__other {
     background-color: #F3BCC8;
-    left: 70px;
+    left: 80px;
   }
 
   &__study.active {

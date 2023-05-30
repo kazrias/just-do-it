@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import './CreateTask.scss'
-function CreateTask() {
+function CreateTask({ onTaskAdd }) {
   const [isStudy, setIsStudy] = useState(true);
   const [isWork, setIsWork] = useState(false);
   const [isOther, setIsOther] = useState(false);
+  const [currentTaskType, setCurrentTaskType] = useState('study')
+  const [currentTask, setCurrentTask] = useState('');
   function onTypeClick(taskType) {
     switch (taskType) {
       case 'study':
@@ -23,15 +25,38 @@ function CreateTask() {
         break;
     }
   }
+  function idGenerator() {
+    return Math.random().toString(16).slice(2);
+  }
+  function onEnterPress(e) {
+    if (e.key === 'Enter') {
+      onTaskAdd({ text: currentTask, type: currentTaskType, id: idGenerator(),completed:false });
+      setCurrentTask('');
+    }
+  }
+  function addTask() {
+    onTaskAdd({ text: currentTask, type: currentTaskType, id: idGenerator(),completed:false });
+    setCurrentTask('');
+
+  }
   return (
     <div className='create-task'>
       <div className="create-task__buttons">
-        <button onClick={() => onTypeClick('study')} className={`create-task__study ${isStudy ? 'active' : ''}`}></button>
-        <button onClick={() => onTypeClick('work')} className={`create-task__work ${isWork ? 'active' : ''}`}></button>
-        <button onClick={() => onTypeClick('other')} className={`create-task__other ${isOther ? 'active' : ''}`}></button>
+        <button onClick={() => {
+          setCurrentTaskType('study');
+          onTypeClick('study');
+        }} className={`create-task__study ${isStudy ? 'active' : ''}`}></button>
+        <button onClick={() => {
+          setCurrentTaskType('work');
+          onTypeClick('work');
+        }} className={`create-task__work ${isWork ? 'active' : ''}`}></button>
+        <button onClick={() => {
+          setCurrentTaskType('other');
+          onTypeClick('other');
+        }} className={`create-task__other ${isOther ? 'active' : ''}`}></button>
       </div>
-      <input className='create-task__text' type="text" placeholder='What is your task?' />
-      <button className='create-task__add'>
+      <input onKeyDown={onEnterPress} onChange={(e) => setCurrentTask(e.target.value)} className='create-task__text' type="text" placeholder='What is your task?' value={currentTask} />
+      <button onClick={addTask} className='create-task__add'>
         <img width={'26px'} src="/done.svg" alt="" />
       </button>
     </div>
