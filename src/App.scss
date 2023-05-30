@@ -4,56 +4,68 @@
   box-sizing: border-box;
 }
 
-.app {
-  width: 100%;
-  height: 100vh;
+body {
   background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
 }
 
+.container{
+  max-width: 930px;
+  padding: 0 15px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
 .welcome-screen {
   width: 100%;
   height: 100%;
-  display: none;
+  display: flex;
+  // display: none;
   padding-top: 200px;
   justify-content: center;
   overflow: hidden;
   opacity: 1;
   position: absolute;
+
   &__title {
     font-size: 144px;
     letter-spacing: 30px;
-    animation: textScale 2s 1s forwards;
+    animation: textScale 3s forwards ease-in-out;
     color: #fff;
   }
 }
-@keyframes screenTop{
-  100%{
+
+@keyframes screenTop {
+  100% {
     transform: translateY(-100%);
   }
 }
-@keyframes textScale{
-  0%{
-    transform:translateY(0%) scale(1);
+
+@keyframes textScale {
+  0% {
+    transform: translateY(0%) scale(1);
   }
-  99%{
-    transform:translateY(100%) scale(2.5);
+
+  99% {
+    transform: translateY(100%) scale(2.5);
     opacity: 0;
   }
-  100%{
-    transform:translateY(1000%);
+
+  100% {
+    transform: translateY(1000%);
   }
 }
-.main-screen{
+
+.main-screen {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  flex-direction: column;
+  padding-top: 150px;
   opacity: 0;
-  animation: mainScreen 2s 2s forwards;
-  
+  animation: mainScreen 2s 2.5s forwards;
+
 }
-@keyframes mainScreen{
-  100%{
+
+@keyframes mainScreen {
+  100% {
+    transform: translateY(30px);
     opacity: 1;
   }
 }

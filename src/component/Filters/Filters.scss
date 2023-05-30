@@ -1,0 +1,54 @@
+.filters {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-bottom: 10px;
+
+  &__main {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__main-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    width: 95px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 16px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+  }
+
+  &__main-btn_study::before {
+    background-color: #9376E0;
+  }
+
+  &__main-btn_work::before {
+    background-color: #E893CF;
+  }
+
+  &__main-btn_other::before {
+    background-color: #F3BCC8;
+  }
+
+  &__brackets {
+    font-size: 30px;
+    transition: .7s;
+    &_padding {
+      padding-left: 32px;
+    }
+  }
+}

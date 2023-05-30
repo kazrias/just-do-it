@@ -1,0 +1,93 @@
+.task {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  background-color: #fff;
+  padding-right: 15px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  &__text {
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    padding-left: 0;
+    font-size: 24px;
+    outline: none;
+    border: none;
+  }
+  &__buttons {
+    position: relative;
+    min-width: 100px;
+    height: 100%;
+  }
+  
+  &__study,
+  &__work,
+  &__other {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 50;
+    border: none;
+    cursor: pointer;
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: #fff;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+  }
+
+  &__study {
+    background-color: #9376E0;
+    left: 10px;
+  }
+
+  &__work {
+    background-color: #E893CF;
+    left: 40px;
+  }
+
+  &__other {
+    background-color: #F3BCC8;
+    left: 70px;
+  }
+
+  &__study.active {
+    &::before {
+      background-color: #9376E0;
+      border: 1px solid #ffffff;
+    }
+  }
+
+  &__work.active {
+    &::before {
+      background-color: #E893CF;
+      border: 1px solid #ffffff;
+    }
+  }
+
+  &__other.active {
+    &::before {
+      background-color: #F3BCC8;
+      border: 1px solid #ffffff;
+    }
+  }
+
+  &__add {
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
