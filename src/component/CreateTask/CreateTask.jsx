@@ -24,14 +24,14 @@ function CreateTask() {
     }
   }
   return (
-    <div className='task'>
-      <div className="task__buttons">
-        <button onClick={() => onTypeClick('study')} className={`task__study ${isStudy ? 'active' : ''}`}></button>
-        <button onClick={() => onTypeClick('work')} className={`task__work ${isWork ? 'active' : ''}`}></button>
-        <button onClick={() => onTypeClick('other')} className={`task__other ${isOther ? 'active' : ''}`}></button>
+    <div className='create-task'>
+      <div className="create-task__buttons">
+        <button onClick={() => onTypeClick('study')} className={`create-task__study ${isStudy ? 'active' : ''}`}></button>
+        <button onClick={() => onTypeClick('work')} className={`create-task__work ${isWork ? 'active' : ''}`}></button>
+        <button onClick={() => onTypeClick('other')} className={`create-task__other ${isOther ? 'active' : ''}`}></button>
       </div>
-      <input className='task__text' type="text" placeholder='What is your task?' />
-      <button className='task__add'>
+      <input className='create-task__text' type="text" placeholder='What is your task?' />
+      <button className='create-task__add'>
         <img width={'26px'} src="/done.svg" alt="" />
       </button>
     </div>

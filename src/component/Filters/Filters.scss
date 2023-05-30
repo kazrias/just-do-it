@@ -1,8 +1,8 @@
 .filters {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
   margin-bottom: 10px;
+  align-items: center;
 
   &__main {
     display: flex;
@@ -20,6 +20,7 @@
     cursor: pointer;
     position: relative;
     width: 95px;
+
     &::before {
       content: '';
       position: absolute;
@@ -47,8 +48,74 @@
   &__brackets {
     font-size: 30px;
     transition: .7s;
+
     &_padding {
       padding-left: 32px;
+    }
+  }
+
+  &__completed {
+    border: 1px solid white;
+    text-transform: capitalize;
+    background-color: transparent;
+    color: white;
+    margin-bottom: -3px;
+    padding: 6px 5px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    width: 77px;
+    &_height-save{
+      opacity: 0;
+    }
+    &-text{
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: 1s ease-in;
+    }
+    &-text.active{
+      opacity: 1;
+    }
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      height: 50px;
+      width: 100%;
+      transition: .7s ease-in-out;
+      z-index: -1;
+    }
+
+    // transform: translate(31px, 16px) rotate(60deg);
+    &::before {
+      left: 0;
+      bottom: 0;
+      transform: translate(-75px, 25px) rotate(60deg);
+      background: linear-gradient(60deg, rgba(147, 118, 224, 1) 0%, rgba(232, 147, 207, 1) 50%, rgba(243, 188, 200, 1) 100%);
+    }
+
+    &::after {
+      left: 0;
+      bottom: 0;
+      transform: translate(75px, 0px) rotate(60deg);
+      background: linear-gradient(-60deg, rgba(147, 118, 224, 1) 0%, rgba(232, 147, 207, 1) 50%, rgba(243, 188, 200, 1) 100%);
+    }
+
+    &.active {
+      &::before {
+        transform: translate(-20px, 25px) rotate(60deg);
+      }
+
+      &::after {
+        transform: translate(31px, 16px) rotate(60deg);
+      }
     }
   }
 }
