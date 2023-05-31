@@ -7,19 +7,33 @@ import EditTask from './component/EditTask/EditTask';
 function App() {
 
   const [tasks, setTasks] = useState([]);
-  const [completedTasks, setCompletedTask] = useState([]);
-  const [taskToEdit, setTaskToEdit] = useState({text:''});
+  const [taskToEdit, setTaskToEdit] = useState({ text: '' });
+  const [editIsActive, setEditIsActive] = useState(false);
+  const [studyFilter, setStudyFilter] = useState(false);
+  const [workFilter, setWorkFilter] = useState(false);
+  const [otherFilter, setOtherFilter] = useState(false);
+  const [completed, setCompleted] = useState(false);
   function onTaskAdd(newTask) {
     setTasks([...tasks, newTask])
   }
   function onTaskDelete(taskToDeleteId) {
-    setCompletedTask(completedTasks.filter(task => task.id !== taskToDeleteId))
     setTasks(tasks.filter(task => task.id !== taskToDeleteId));
   }
   function onTaskComplete(completedTask) {
-    setCompletedTask([...completedTasks, completedTask]);
+    setTasks(
+      tasks.map(task => {
+        if (task.id === completedTask.id) {
+          return {
+            ...task,
+            completed: !completed,
+          }
+        }
+        return task
+      })
+    )
   }
   function onEditClick(editableTask) {
+    setEditIsActive(true);
     setTaskToEdit(editableTask);
   }
   function onEditComplete() {
@@ -34,7 +48,40 @@ function App() {
         }
         return obj
       })
-    )
+    );
+    setEditIsActive(false);
+  }
+  function onCompleteClick() {
+    setCompleted(!completed)
+  }
+  let tasksToShow = [...tasks];
+  if (studyFilter && !workFilter && !otherFilter) {
+    // console.log('studyFilter');
+    tasksToShow = tasks.filter(task => task.type === 'study');
+  }
+  if (!studyFilter && workFilter && !otherFilter) {
+    // console.log('workFilter');
+    tasksToShow = tasks.filter(task => task.type === 'work');
+  }
+  if (!studyFilter && !workFilter && otherFilter) {
+    // console.log('otherFilter');
+    tasksToShow = tasks.filter(task => task.type === 'other');
+  }
+  if (studyFilter && workFilter && !otherFilter) {
+    tasksToShow = tasks.filter(task => task.type === 'study' || task.type === 'work');
+  }
+  if (studyFilter && !workFilter && otherFilter) {
+    tasksToShow = tasks.filter(task => task.type === 'study' || task.type === 'other');
+  }
+  if (!studyFilter && workFilter && otherFilter) {
+    tasksToShow = tasks.filter(task => task.type === 'work' || task.type === 'other');
+  }
+  if (studyFilter && workFilter && otherFilter) {
+    tasksToShow = [...tasks];
+  }
+  if (completed) {
+    // console.log('completed');
+    tasksToShow = tasksToShow.filter(task => task.completed)
   }
   return (
     <div className='app'>
@@ -43,12 +90,17 @@ function App() {
       </div>
       <div className="container">
         <div className="main-screen">
-          <Filters />
+          <Filters studyFilter={studyFilter} setStudyFilter={setStudyFilter}
+            workFilter={workFilter} setWorkFilter={setWorkFilter}
+            otherFilter={otherFilter} setOtherFilter={setOtherFilter}
+            completed={completed} onCompleteClick={onCompleteClick} />
           <CreateTask onTaskAdd={onTaskAdd} />
-          <Tasks onEditClick={onEditClick} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} tasks={tasks} />
+          <Tasks setEditIsActive={setEditIsActive} onEditClick={onEditClick} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} tasks={tasksToShow} />
         </div>
       </div>
-      <EditTask onEditComplete={onEditComplete} setTaskToEdit={setTaskToEdit} taskToEdit={taskToEdit} />
+      {
+        editIsActive ? <EditTask onEditComplete={onEditComplete} setTaskToEdit={setTaskToEdit} taskToEdit={taskToEdit} /> : ''
+      }
     </div >
   )
 }

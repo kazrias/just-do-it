@@ -1,17 +1,16 @@
-.edit-task {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  left: 0;
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  // padding: 200px;
+.edit-task__wrapper {
 
-  // display: none;
-  &__text {
-    background-color: white;
-    height: 100px;
-    width: 300px;
-  }
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 225px;
+}
+.edit-modal{
+  max-width: 900px;
+  width: 100%;
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './Task.scss'
-function Task({ task, text, type, completed, id, onTaskComplete,onEditClick, onTaskDelete }) {
+function Task({ task, text, type, completed, id, onTaskComplete,onEditClick,setEditIsActive, onTaskDelete }) {
   const [done, setDone] = useState(false);
   return (
     <div className={`task ${completed ? 'task_completed' : ''}`}>
@@ -14,7 +14,7 @@ function Task({ task, text, type, completed, id, onTaskComplete,onEditClick, onT
             <path d="M4.1 12.7L9 17.6 20.3 6.3" fill="none" />
           </svg>
         </div>
-        <img onClick={() => onEditClick(task)} className='task__functionality-edit' width={'20px'} src="./edit.svg" alt="" />
+        <img onClick={() =>{ onEditClick(task);setEditIsActive;}} className='task__functionality-edit' width={'20px'} src="./edit.svg" alt="" />
         <img onClick={() => onTaskDelete(id)} className='task__functionality-delete' width={'26px'} src="./delete.svg" alt="" />
       </div>
     </div>

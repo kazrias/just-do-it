@@ -1,10 +1,6 @@
 import { useState } from 'react'
 import './Filters.scss'
-function Filters() {
-  const [studyFilter, setStudyFilter] = useState(false);
-  const [workFilter, setWorkFilter] = useState(false);
-  const [otherFilter, setOtherFilter] = useState(false);
-  const [completed, setCompleted] = useState(false);
+function Filters({studyFilter,setStudyFilter,workFilter,setWorkFilter,otherFilter,setOtherFilter,completed,onCompleteClick}) {
   return (
     <div className="filters">
       <div className="filters__main">
@@ -24,7 +20,7 @@ function Filters() {
           <span style={otherFilter ? { color: '#F3BCC8' } : {}} className='filters__brackets'>{otherFilter ? '{' : '['}</span>Other<span style={otherFilter ? { color: '#F3BCC8' } : {}} className='filters__brackets filters__brackets_padding '>{otherFilter ? '}' : ']'}</span>
         </button>
       </div>
-      <button onClick={() => setCompleted(!completed)} className={`filters__completed ${completed ? 'active' : ''}`}>
+      <button onClick={onCompleteClick} className={`filters__completed ${completed ? 'active' : ''}`}>
         <span className={`filters__completed-text ${!completed ? 'active' : ''}`}>all</span>
         <span className='filters__completed_height-save'>|</span>
         <span className={`filters__completed-text ${completed ? 'active' : ''}`}>completed</span>
