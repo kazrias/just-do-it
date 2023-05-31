@@ -56,15 +56,12 @@ function App() {
   }
   let tasksToShow = [...tasks];
   if (studyFilter && !workFilter && !otherFilter) {
-    // console.log('studyFilter');
     tasksToShow = tasks.filter(task => task.type === 'study');
   }
   if (!studyFilter && workFilter && !otherFilter) {
-    // console.log('workFilter');
     tasksToShow = tasks.filter(task => task.type === 'work');
   }
   if (!studyFilter && !workFilter && otherFilter) {
-    // console.log('otherFilter');
     tasksToShow = tasks.filter(task => task.type === 'other');
   }
   if (studyFilter && workFilter && !otherFilter) {
