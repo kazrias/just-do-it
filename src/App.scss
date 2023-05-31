@@ -30,7 +30,7 @@ body {
   &__title {
     font-size: 144px;
     letter-spacing: 30px;
-    animation: textScale 3s forwards ease-in-out;
+    animation: textScale 3s 1s forwards ease-in-out;
     color: #fff;
   }
 }

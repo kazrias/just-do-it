@@ -22,10 +22,11 @@ function App() {
   function onTaskComplete(completedTask) {
     setTasks(
       tasks.map(task => {
+        console.log('map worked',task);
         if (task.id === completedTask.id) {
           return {
             ...task,
-            completed: !completed,
+            completed: !task.completed,
           }
         }
         return task
@@ -80,6 +81,7 @@ function App() {
     // console.log('completed');
     tasksToShow = tasksToShow.filter(task => task.completed)
   }
+  console.log(tasks);
   return (
     <div className='app'>
       <div className="welcome-screen">
