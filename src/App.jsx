@@ -13,6 +13,7 @@ function App() {
   const [workFilter, setWorkFilter] = useState(false);
   const [otherFilter, setOtherFilter] = useState(false);
   const [completed, setCompleted] = useState(false);
+
   function onTaskAdd(newTask) {
     setTasks([...tasks, newTask])
   }
@@ -22,7 +23,7 @@ function App() {
   function onTaskComplete(completedTask) {
     setTasks(
       tasks.map(task => {
-        console.log('map worked',task);
+        console.log('map worked', task);
         if (task.id === completedTask.id) {
           return {
             ...task,

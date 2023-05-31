@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 .create-task {
   width: 100%;
   height: 50px;
@@ -6,6 +8,8 @@
   padding-right: 20px;
   border-radius: 12px;
   margin-bottom: 30px;
+  position: relative;
+
   &__text {
     height: 100%;
     width: 100%;
@@ -15,12 +19,21 @@
     outline: none;
     border: none;
   }
+
+  &__warning {
+    color: rgb(255, 255, 255);
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+    animation: rightAndLeft 1.5s forwards;
+  }
+
   &__buttons {
     position: relative;
     min-width: 110px;
     height: 100%;
   }
-  
+
   &__study,
   &__work,
   &__other {
@@ -33,6 +46,7 @@
     z-index: 50;
     border: none;
     cursor: pointer;
+
     &::before {
       content: '';
       position: absolute;
@@ -89,5 +103,26 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+  }
+
+}
+
+@keyframes rightAndLeft {
+  25% {
+    transform: translateX(-15px);
+    color: red;
+  }
+
+  50% {
+    transform: translateX(15px);
+    color: red;
+  }
+
+  75% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    color: white;
   }
 }
