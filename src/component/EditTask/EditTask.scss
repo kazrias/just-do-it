@@ -1,5 +1,4 @@
 .edit-task__wrapper {
-
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     left: 0;
@@ -8,7 +7,7 @@
     bottom: 0;
     display: flex;
     justify-content: center;
-    padding: 225px;
+    padding: 225px 15px 0 15px;
 }
 .edit-modal{
   max-width: 900px;

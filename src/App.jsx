@@ -78,10 +78,8 @@ function App() {
     tasksToShow = [...tasks];
   }
   if (completed) {
-    // console.log('completed');
     tasksToShow = tasksToShow.filter(task => task.completed)
   }
-  console.log(tasks);
   return (
     <div className='app'>
       <div className="welcome-screen">

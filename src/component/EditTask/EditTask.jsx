@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import './EditTask.scss'
-// import '../CreateTask/CreateTask.scss'
 function EditTask({ onEditComplete, setTaskToEdit, taskToEdit }) {
 
   function onEnterClick(e) {

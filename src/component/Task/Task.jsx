@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './Task.scss'
 function Task({ task, text, type, completed, id, onTaskComplete, onEditClick, setEditIsActive, onTaskDelete }) {
   return (

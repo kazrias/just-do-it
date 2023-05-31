@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './Filters.scss'
 function Filters({studyFilter,setStudyFilter,workFilter,setWorkFilter,otherFilter,setOtherFilter,completed,onCompleteClick}) {
   return (
