@@ -15,7 +15,7 @@ function App() {
   const [completed, setCompleted] = useState(false);
 
   function onTaskAdd(newTask) {
-    setTasks([...tasks, newTask])
+    setTasks([ newTask,...tasks])
   }
   function onTaskDelete(taskToDeleteId) {
     setTasks(tasks.filter(task => task.id !== taskToDeleteId));
