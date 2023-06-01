@@ -69,7 +69,7 @@ function CreateTask({ onTaskAdd }) {
         </div>
         <input onKeyDown={onEnterPress} onChange={(e) => setCurrentTask(e.target.value)} className='create-task__text' type="text" placeholder='What is your task?' value={currentTask} />
         <button onClick={addTask} className='create-task__add'>
-          <img width={'26px'} src="/done.svg" alt="" />
+          <img width={'26px'} src="./done.svg" alt="" />
         </button>
       </div>
       {
