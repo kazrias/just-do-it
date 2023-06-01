@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background: linear-gradient(180deg, rgb(5, 32, 67) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
 }
