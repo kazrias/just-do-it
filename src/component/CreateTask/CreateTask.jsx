@@ -73,7 +73,7 @@ function CreateTask({ onTaskAdd }) {
         </button>
       </div>
       {
-        showWarning ? <p className='create-task__warning'>Tasks should containt 3 to 55 letters!</p> : ''
+        showWarning ? <p className='create-task__warning'>Tasks should contain 3 to 55 letters!</p> : ''
       }
 
     </>

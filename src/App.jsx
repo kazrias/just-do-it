@@ -13,9 +13,9 @@ function App() {
   const [workFilter, setWorkFilter] = useState(false);
   const [otherFilter, setOtherFilter] = useState(false);
   const [completed, setCompleted] = useState(false);
-
+  const [editWarning, setEditWarning] = useState(false);
   function onTaskAdd(newTask) {
-    setTasks([ newTask,...tasks])
+    setTasks([newTask, ...tasks])
   }
   function onTaskDelete(taskToDeleteId) {
     setTasks(tasks.filter(task => task.id !== taskToDeleteId));
@@ -23,7 +23,6 @@ function App() {
   function onTaskComplete(completedTask) {
     setTasks(
       tasks.map(task => {
-        console.log('map worked', task);
         if (task.id === completedTask.id) {
           return {
             ...task,
@@ -39,6 +38,10 @@ function App() {
     setTaskToEdit(editableTask);
   }
   function onEditComplete() {
+    if (taskToEdit.text.trim().length < 3 || taskToEdit.text.trim().length > 55) {
+      setEditWarning(true);
+      return
+    }
     setTasks(
       tasks.map((obj) => {
         if (obj.id === taskToEdit.id) {
@@ -51,6 +54,7 @@ function App() {
         return obj
       })
     );
+    setEditWarning(false);
     setEditIsActive(false);
   }
   function onCompleteClick() {
@@ -97,7 +101,7 @@ function App() {
         </div>
       </div>
       {
-        editIsActive ? <EditTask onEditComplete={onEditComplete} setTaskToEdit={setTaskToEdit} taskToEdit={taskToEdit} /> : ''
+        editIsActive ? <EditTask onEditComplete={onEditComplete} setTaskToEdit={setTaskToEdit} setEditIsActive={setEditIsActive} taskToEdit={taskToEdit} editWarning={editWarning} setEditWarning={setEditWarning} /> : ''
       }
     </div >
   )

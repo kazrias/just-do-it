@@ -1,15 +1,55 @@
 .edit-task__wrapper {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    padding: 225px 15px 0 15px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 225px 15px 0 15px;
 }
-.edit-modal{
-  max-width: 900px;
+
+.edit-modal {
+  max-width: 930px;
   width: 100%;
+  padding: 30px 15px;
+  background-color: #fff;
+  position: fixed;
+  border-radius: 12px;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .create-task {
+    margin-bottom: 10px;
+    border: 1px solid black;
+  }
+}
+
+.edit-task {
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  &__done{
+    background-color: rgb(53, 186, 53);
+    border: none;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  &__cancel{
+    background-color: rgb(237, 69, 69);
+    border: none;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  &__warning{
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+  }
 }

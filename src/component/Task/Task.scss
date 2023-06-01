@@ -1,5 +1,17 @@
+@property --myColor1 {
+  syntax: '<color>';
+  initial-value: white;
+  inherits: false;
+}
+
+@property --myColor2 {
+  syntax: '<color>';
+  initial-value: white;
+  inherits: false;
+}
+
 .task {
-  background-color: white;
+  background: linear-gradient(68.6deg, var(--myColor1) 1.8%, var(--myColor2) 100.5%);
   margin-bottom: 15px;
   padding-left: 20px;
   height: 50px;
@@ -7,6 +19,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
+  transition: --myColor1 1s, --myColor2 .5s;
 
   &__main {
     display: flex;
@@ -34,6 +47,12 @@
 
   &__text {
     font-size: 24px;
+  }
+
+  &_completed {
+    // background: linear-gradient(68.6deg, rgb(252, 165, 241) 1.8%, rgb(181, 255, 255) 100.5%);
+    --myColor1: rgb(181, 255, 255);
+    --myColor2: rgb(252, 165, 241);
   }
 
   &__functionality {
