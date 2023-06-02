@@ -1,5 +1,5 @@
 import './Filters.scss'
-function Filters({studyFilter,setStudyFilter,workFilter,setWorkFilter,otherFilter,setOtherFilter,completed,onCompleteClick}) {
+function Filters({ studyFilter, setStudyFilter, workFilter, setWorkFilter, otherFilter, setOtherFilter, completed, onCompleteClick }) {
   return (
     <div className="filters">
       <div className="filters__main">
@@ -20,9 +20,9 @@ function Filters({studyFilter,setStudyFilter,workFilter,setWorkFilter,otherFilte
         </button>
       </div>
       <button onClick={onCompleteClick} className={`filters__completed ${completed ? 'active' : ''}`}>
-        <span className={`filters__completed-text ${!completed ? 'active' : ''}`}>all</span>
+        <span className={`filters__completed-text ${!completed ? 'active' : ''}`}>Completed</span>
         <span className='filters__completed_height-save'>|</span>
-        <span className={`filters__completed-text ${completed ? 'active' : ''}`}>completed</span>
+        <span className={`filters__completed-text ${completed ? 'active' : ''}`}>Show all</span>
       </button>
     </div>
   )

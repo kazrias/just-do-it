@@ -4,6 +4,7 @@ import CreateTask from './component/CreateTask/CreateTask'
 import Filters from './component/Filters/Filters'
 import Tasks from './component/Tasks/Tasks'
 import EditTask from './component/EditTask/EditTask';
+import DeleteModal from './component/DeleteModal/DeleteModal';
 function App() {
 
   const [tasks, setTasks] = useState([]);
@@ -14,11 +15,14 @@ function App() {
   const [otherFilter, setOtherFilter] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [editWarning, setEditWarning] = useState(false);
+  const [deleteModalActive, setDeleteModalActive] = useState(false);
+  const [taskIdToDelete, setTaskIdToDelete] = useState()
   function onTaskAdd(newTask) {
     setTasks([newTask, ...tasks])
   }
-  function onTaskDelete(taskToDeleteId) {
-    setTasks(tasks.filter(task => task.id !== taskToDeleteId));
+  function onTaskDelete() {
+    setTasks(tasks.filter(task => task.id !== taskIdToDelete));
+    setDeleteModalActive(false)
   }
   function onTaskComplete(completedTask) {
     setTasks(
@@ -60,6 +64,10 @@ function App() {
   function onCompleteClick() {
     setCompleted(!completed)
   }
+  function onDeleteModalActivationg(id) {
+    setDeleteModalActive(true);
+    setTaskIdToDelete(id)
+  }
   let tasksToShow = [...tasks];
   if (studyFilter && !workFilter && !otherFilter) {
     tasksToShow = tasks.filter(task => task.type === 'study');
@@ -83,7 +91,7 @@ function App() {
     tasksToShow = [...tasks];
   }
   if (completed) {
-    tasksToShow = tasksToShow.filter(task => task.completed)
+    tasksToShow = tasksToShow.filter(task => !task.completed)
   }
   return (
     <div className='app'>
@@ -97,12 +105,19 @@ function App() {
             otherFilter={otherFilter} setOtherFilter={setOtherFilter}
             completed={completed} onCompleteClick={onCompleteClick} />
           <CreateTask onTaskAdd={onTaskAdd} />
-          <Tasks setEditIsActive={setEditIsActive} onEditClick={onEditClick} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} tasks={tasksToShow} />
+          <Tasks onDeleteModalActivationg={onDeleteModalActivationg} setEditIsActive={setEditIsActive} onEditClick={onEditClick} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} tasks={tasksToShow} />
         </div>
       </div>
-      {
-        editIsActive ? <EditTask onEditComplete={onEditComplete} setTaskToEdit={setTaskToEdit} setEditIsActive={setEditIsActive} taskToEdit={taskToEdit} editWarning={editWarning} setEditWarning={setEditWarning} /> : ''
-      }
+      <>
+        {
+          editIsActive ? <EditTask onEditComplete={onEditComplete} setTaskToEdit={setTaskToEdit} setEditIsActive={setEditIsActive} taskToEdit={taskToEdit} editWarning={editWarning} setEditWarning={setEditWarning} /> : ''
+        }
+      </>
+      <>
+        {
+          deleteModalActive ? <DeleteModal onTaskDelete={onTaskDelete} setDeleteModalActive={setDeleteModalActive} /> : ''
+        }
+      </>
     </div >
   )
 }

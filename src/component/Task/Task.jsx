@@ -1,5 +1,6 @@
 import './Task.scss'
-function Task({ task, text, type, completed, id, onTaskComplete, onEditClick, setEditIsActive, onTaskDelete }) {
+function Task({ task, text, type, completed, id, onTaskComplete, onEditClick, setEditIsActive, onDeleteModalActivationg }) {
+
   return (
     <div className={`task ${completed ? 'task_completed' : ''}`}>
       <div className="task__main">
@@ -13,7 +14,7 @@ function Task({ task, text, type, completed, id, onTaskComplete, onEditClick, se
           </svg>
         </div>
         <img onClick={() => { onEditClick(task); setEditIsActive; }} className='task__functionality-edit' width={'20px'} src="./edit.svg" alt="" />
-        <img onClick={() => onTaskDelete(id)} className='task__functionality-delete' width={'26px'} src="./delete.svg" alt="" />
+        <img onClick={() => onDeleteModalActivationg(id)} className='task__functionality-delete' width={'26px'} src="./delete.svg" alt="" />
       </div>
     </div>
   )

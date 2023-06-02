@@ -79,6 +79,9 @@
       width: 100%;
       opacity: 0;
       transition: .5s ease-in-out;
+      &:first-of-type{
+        text-decoration: line-through;
+      }
     }
     &-text.active{
       opacity: 1;
