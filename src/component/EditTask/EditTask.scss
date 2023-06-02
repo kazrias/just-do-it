@@ -6,6 +6,8 @@
   right: 0;
   bottom: 0;
   padding: 225px 15px 0 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .edit-modal {
@@ -13,12 +15,8 @@
   width: 100%;
   padding: 30px 15px;
   background-color: #fff;
-  position: fixed;
   border-radius: 12px;
-  top: 200px;
-  left: 50%;
-  transform: translateX(-50%);
-
+  height: 150px;
   .create-task {
     margin-bottom: 10px;
     border: 1px solid black;
@@ -31,7 +29,8 @@
     justify-content: space-between;
     gap: 15px;
   }
-  &__done{
+
+  &__done {
     background-color: rgb(53, 186, 53);
     border: none;
     padding: 5px 10px;
@@ -39,17 +38,29 @@
     border-radius: 5px;
     cursor: pointer;
     margin-left: auto;
+    align-self: flex-start;
   }
-  &__cancel{
+
+  &__cancel {
     background-color: rgb(237, 69, 69);
     border: none;
     padding: 5px 10px;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+    align-self: flex-start;
   }
-  &__warning{
+
+  &__warning {
     font-family: 'Inter', sans-serif;
     font-size: 20px;
+  }
+}
+
+@media (max-width:550px){
+  .edit-task{
+    &__warning {
+      font-size: 14px;
+    }
   }
 }

@@ -11,6 +11,8 @@
 }
 
 .task {
+  background-color: white;
+
   background: linear-gradient(68.6deg, var(--myColor1) 1.8%, var(--myColor2) 100.5%);
   margin-bottom: 15px;
   padding-left: 20px;
@@ -106,5 +108,25 @@
         stroke-dashoffset: 0
       }
     }
+  }
+}
+
+@media(max-width:410px) {
+  .task {
+    padding-left: 10px;
+
+    &__text {
+      font-size: 18px;
+    }
+
+    &__functionality {
+      padding-right: 10px;
+    }
+  }
+}
+
+@-moz-document url-prefix() {
+  .task {
+    background-color: #fff;
   }
 }

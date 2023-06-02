@@ -59,16 +59,18 @@
     text-transform: capitalize;
     background-color: transparent;
     color: white;
-    margin-bottom: -3px;
+    margin-bottom: -5px;
     padding: 6px 5px;
     cursor: pointer;
     overflow: hidden;
     position: relative;
     width: 77px;
-    &_height-save{
+
+    &_height-save {
       opacity: 0;
     }
-    &-text{
+
+    &-text {
       position: absolute;
       display: flex;
       align-items: center;
@@ -79,13 +81,16 @@
       width: 100%;
       opacity: 0;
       transition: .5s ease-in-out;
-      &:first-of-type{
+
+      &:first-of-type {
         text-decoration: line-through;
       }
     }
-    &-text.active{
+
+    &-text.active {
       opacity: 1;
     }
+
     &::before,
     &::after {
       content: '';
@@ -118,6 +123,26 @@
       &::after {
         transform: translate(31px, 16px) rotate(60deg);
       }
+    }
+  }
+}
+
+@media (max-width:420px) {
+  .filters {
+    gap: 10px;
+    flex-wrap: wrap;
+
+    &__completed {
+      margin-bottom: 0;
+      margin-left: 2px;
+    }
+  }
+}
+
+@media(max-width:335px) {
+  .filters {
+    &__main {
+      gap: 5px;
     }
   }
 }

@@ -129,3 +129,28 @@
     color: white;
   }
 }
+
+@media (max-width:410px) {
+  .create-task {
+    padding-right: 10px;
+    &__text {
+      font-size: 18px;
+    }
+
+    &__buttons {
+      min-width: 96px;
+    }
+
+    &__study {
+      left: 10px;
+    }
+
+    &__work {
+      left: 40px;
+    }
+
+    &__other {
+      left: 70px;
+    }
+  }
+}
