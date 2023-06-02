@@ -12,7 +12,6 @@
 
 .task {
   background-color: white;
-
   background: linear-gradient(68.6deg, var(--myColor1) 1.8%, var(--myColor2) 100.5%);
   margin-bottom: 15px;
   padding-left: 20px;
@@ -20,6 +19,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 5px;
   border-radius: 12px;
   transition: --myColor1 1s, --myColor2 .5s;
   font-family: 'Raleway', sans-serif;
@@ -31,7 +31,7 @@
   }
 
   &__type {
-    width: 20px;
+    min-width: 20px;
     height: 20px;
     border-radius: 50%;
   }
@@ -111,13 +111,28 @@
   }
 }
 
+@media(max-width:710px) {
+  .task {
+    &__text {
+      font-size: 18px;
+    }
+
+  }
+}
+
+@media(max-width:460px) {
+  .task {
+    &__text {
+      font-size: 14px;
+    }
+
+  }
+}
+
 @media(max-width:410px) {
   .task {
     padding-left: 10px;
 
-    &__text {
-      font-size: 18px;
-    }
 
     &__functionality {
       padding-right: 10px;
