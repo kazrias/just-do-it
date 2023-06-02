@@ -37,6 +37,8 @@ body {
   &__title {
     font-size: 144px;
     letter-spacing: 30px;
+    margin-right: -30px;
+    text-align: center;
     animation: textScale 3s 1s forwards ease-in-out;
     color: #fff;
   }
@@ -76,5 +78,13 @@ body {
   100% {
     transform: translateY(30px);
     opacity: 1;
+  }
+}
+
+@media (max-width:550px) {
+  .welcome-screen {
+    &__title {
+      font-size: 75px;
+    }
   }
 }
