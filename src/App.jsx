@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.scss'
 import CreateTask from './component/CreateTask/CreateTask'
 import Filters from './component/Filters/Filters'
@@ -16,7 +16,20 @@ function App() {
   const [completed, setCompleted] = useState(false);
   const [editWarning, setEditWarning] = useState(false);
   const [deleteModalActive, setDeleteModalActive] = useState(false);
-  const [taskIdToDelete, setTaskIdToDelete] = useState()
+  const [taskIdToDelete, setTaskIdToDelete] = useState();
+  useEffect(() => {
+    const localData = localStorage.getItem("TODO_APP");
+
+    if (localData !== null) {
+      console.log('localData', localData);
+      setTasks([...JSON.parse(localData)])
+    };
+  }, []);
+  useEffect(() => {
+    if (tasks.length !== 0) {
+      localStorage.setItem('TODO_APP', JSON.stringify(tasks));
+    }
+  }, [tasks]);
   function onTaskAdd(newTask) {
     setTasks([newTask, ...tasks])
   }
@@ -93,6 +106,8 @@ function App() {
   if (completed) {
     tasksToShow = tasksToShow.filter(task => !task.completed)
   }
+
+
   return (
     <div className='app'>
       <div className="welcome-screen">
@@ -105,7 +120,7 @@ function App() {
             otherFilter={otherFilter} setOtherFilter={setOtherFilter}
             completed={completed} onCompleteClick={onCompleteClick} />
           <CreateTask onTaskAdd={onTaskAdd} />
-          <Tasks onDeleteModalActivationg={onDeleteModalActivationg} setEditIsActive={setEditIsActive} onEditClick={onEditClick} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} tasks={tasksToShow} />
+          {tasksToShow.length !== 0 ? <Tasks onDeleteModalActivationg={onDeleteModalActivationg} setEditIsActive={setEditIsActive} onEditClick={onEditClick} onTaskComplete={onTaskComplete} onTaskDelete={onTaskDelete} tasks={tasksToShow} /> : ''}
         </div>
       </div>
       <>
