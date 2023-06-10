@@ -145,3 +145,12 @@
     background-color: #fff;
   }
 }
+
+input,
+textarea,
+button,
+select,
+img,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
